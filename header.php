@@ -1,5 +1,4 @@
-<?php
-echo '
+
 <!DOCTYPE html>
 <html lang="pl" dir="ltr">
   <head>
@@ -14,7 +13,7 @@ echo '
     <div class = "container">
       <header class =  "blog-header py-3">
         <div class = "row">
-          <div class = "col-4 pt-2 text-success">Change your life!</div>
+          <div class = "col-4 pt-2 text-success"><h2>Change your life!</h2></div>
           <div class = "col-4 display-4 text-center">Dietetyka online</div>
           <div class = "col-3"></div>
           <div class = "col-1 justify-content-end pt-2">
@@ -25,11 +24,14 @@ echo '
 
       <div class = "nav-scroller">
         <nav class = "nav d-flex justify-content-between">
-          <a class = "p-2 text-muted" href = "index.php">Home</a>
-          <a class = "p-2 text-muted" href = "#diety">Diety</a>
-          <a class = "p-2 text-muted" href = "#">Blog</a>
-          <a class = "p-2 text-muted" href = "#">Kontakt</a>
+          <a class = "p-2 nav_span" href = "index.php"><h4>Home</h4></a>
+          <a class = "p-2 nav_span" href = "#diety"><h4>Diety</h4></a>
+          <a class = "p-2 nav_span" href = "#"><h4>Blog</h4></a>
+          <a class = "p-2 nav_span" href = "#"><h4>Kontakt</h4></a>
         </nav>
       </div>
-      '
-      ?>
+      <div class = "row">
+        <div class = "col-12">
+          <span id = "pasek"></span>
+        </div>
+      </div>
