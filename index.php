@@ -2,6 +2,18 @@
 <style>
 <?php include 'main.css'; ?>
 </style>
+<script type="text/javascript">
+  var obecne_id = 0;
+  function zmienOpis(id){
+    console.log("zmieniam");
+    document.getElementById("tab-"+obecne_id).classList.add("d-none");
+    document.getElementById("btn-"+obecne_id).classList.add("d-none");
+    document.getElementById("tab-"+id).classList.remove("d-none");
+    document.getElementById("btn-"+id).classList.remove("d-none");
+    obecne_id = id;
+  }
+
+</script>
 <div class = "row">
   <div class = "col-5 pt-5 pb-5">
     Między jednym meetingiem, a kolejnym treningiem i motywacyjnym coachingiem
@@ -28,20 +40,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Temp</td>
-          </tr>
-          <tr>
-            <td>Temp</td>
-          </tr>
-          <tr>
-            <td>Temp</td>
-          </tr>
-          <tr>
-            <td>Temp</td>
-          </tr>
+          <?php
+            include 'config.php';
+            $connect = new PDO($servername, $username, $password, $options);
+            $sql = sprintf("SELECT id_diety, nazwa, opis FROM diety");
+            $statement = $connect->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            $i = 0;
+            foreach ($result as $row) {
+              $nazwy[$i] = $row['nazwa'];
+              $opisy[$i] = $row['opis'];
+              echo "<tr>";
+              echo "<td onclick='zmienOpis(".$i.")'>".$row['nazwa']."</td>";
+              echo "</tr>";
+              $i += 1;
+            }
+          ?>
         </tbody>
       </table>
+    </div>
+    <div class = "col-9" id = "opis">
+      <?php
+          for($j = 0; $j < $i; $j++){
+            echo "<section id='tab-".$j."' class='align_justify tab d-none'><div class='row'><div class='col-12 display-4'>".$nazwy[$j]."</div></div><div class='col-10'>".$opisy[$j]."</div></section>";
+            echo "<a id='btn-".$j."' href='dieta.php?id=".$j."' class='btn btn-sm btn-outline-secondary d-none'>Czytaj więcej</a>";
+          }
+      ?>
+      <script>
+        zmienOpis(0);
+      </script>
     </div>
   </div>
 </div>
