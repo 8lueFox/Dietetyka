@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl" dir="ltr">
   <head>
@@ -17,7 +19,15 @@
           <div class = "col-4 display-4 text-center">Dietetyka online</div>
           <div class = "col-3"></div>
           <div class = "col-1 justify-content-end pt-2">
-            <a class = "btn btn-sm btn-outline-secondary" href = "#">Sign up</a>
+            <?php
+            if(isset($_SESSION['login'])){
+              echo "Witaj, ".$_SESSION['login'];
+              echo '<a class = "btn btn-sm btn-outline-secondary" href = "logout.php">Logout</a>';
+            }
+              else{
+                echo '<a class = "btn btn-sm btn-outline-secondary" href = "login.php">Sign up</a>';
+              }
+            ?>
           </div>
         </div>
       </header>
@@ -25,7 +35,7 @@
       <div class = "nav-scroller">
         <nav class = "nav d-flex justify-content-between">
           <a class = "p-2 nav_span" href = "index.php"><h4>Home</h4></a>
-          <a class = "p-2 nav_span" href = "#diety"><h4>Diety</h4></a>
+          <a class = "p-2 nav_span" href = "index.php#diety"><h4>Diety</h4></a>
           <a class = "p-2 nav_span" href = "#"><h4>Blog</h4></a>
           <a class = "p-2 nav_span" href = "#"><h4>Kontakt</h4></a>
         </nav>
