@@ -12,7 +12,8 @@
   preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
 
   if(sizeof($matches) == 0){
-    $sql = sprintf("INSERT INTO opinie values(NULL,(SELECT id_uzytkownika FROM uzytkownicy WHERE login = '$login'),'$idDiety','$comment')");
+    $date = date("Y-m-d");
+    $sql = sprintf("INSERT INTO opinie values(NULL,(SELECT id_uzytkownika FROM uzytkownicy WHERE login = '$login'),'$idDiety','$comment','$date')");
     $statement = $connect->prepare($sql);
     $statement->execute();
   }

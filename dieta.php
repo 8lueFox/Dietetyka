@@ -19,7 +19,9 @@
 </div>
 <div class = "row">
   <div class = "col-3"></div>
-  <div class = "col-5 align_justify"><?php echo $result['opis'];?></div>
+  <div class = "col-5 align_justify"><?php echo $result['opis'];?>
+    <h4>Kaloryczność: <?php echo $result['kalorycznosc'];?></h4>
+  </div>
   <div class = "col-4 text-center">
     <label>Kup teraz<br> JEDYNIE za<br><b> <?php echo $result['cena'];?></b><br> za miesiąc.</label><br>
     <a href='buy.php?id=<?php echo $idDiety?>' class='btn btn-sm btn-outline-secondary'>KUP TERAZ</a>

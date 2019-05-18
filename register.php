@@ -49,7 +49,8 @@
     $plec = 'M';
     if(substr($name, -1) == 'a')
       $plec = 'K';
-    $sql = sprintf("INSERT INTO uzytkownicy VALUES (NULL,'$name','$surname','$email',' ',' ',' ',' ','$data','$plec','$login','$password',0)");
+    $today = date("Y-m-d");
+    $sql = sprintf("INSERT INTO uzytkownicy VALUES (NULL, '$name','$surname','$email','','','','','$data','$plec','$login','$password',0,'$today');");
     $statement = $connect->prepare($sql);
     $statement->execute();
     $sql = sprintf("SELECT * FROM uzytkownicy WHERE login = '$login'");
@@ -62,7 +63,7 @@
           $_SESSION['login'] = $login;
           ?>
           <script>
-            document.getElementById('formularz').innerHTML = "<h1 class = 'text-center'>Zostałeś zalogowany</h1>";
+            document.getElementById('formularz').innerHTML = "<h1 class = 'text-center'>Zostałeś zarejestrowany :)</h1>";
           </script>
           <?php
         }

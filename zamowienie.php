@@ -23,7 +23,8 @@ if($czas == 1){
 }else if($czas == 4){
   $stop_day = date("Y-m-d", strtotime($today . '+30 day'));
 }
-$sql = sprintf("INSERT INTO zamowienia VALUES (NULL, (SELECT id_uzytkownika FROM uzytkownicy WHERE login = '$login'), ($idDiety+1), '$today', '$stop_day', '$today');");
+$today2 = date("Y-m-d", strtotime($today."-1 day"));
+$sql = sprintf("INSERT INTO zamowienia VALUES (NULL, (SELECT id_uzytkownika FROM uzytkownicy WHERE login = '$login'), ($idDiety), '$today', '$stop_day', '$today2');");
 $statement = $connect->prepare($sql);
 $statement->execute();
 header("Location: index.php")

@@ -38,6 +38,23 @@ session_start();
           <a class = "p-2 nav_span" href = "index.php#diety"><h4>Diety</h4></a>
           <a class = "p-2 nav_span" href = "#"><h4>Blog</h4></a>
           <a class = "p-2 nav_span" href = "#"><h4>Kontakt</h4></a>
+          <?php
+            if(isset($_SESSION['login'])){
+              include 'config.php';
+              $connect = new PDO($servername, $username, $password, $options);
+              $login = $_SESSION['login'];
+              $sql = sprintf("SELECT pracownik FROM uzytkownicy WHERE login = '$login'");
+              $statement = $connect->prepare($sql);
+              $statement->execute();
+              $result = $statement->fetchAll();
+              foreach($result as $row){
+                if($row['pracownik'] == 1 | $row['pracownik'] == 2){
+                  echo '<a class = "p-2 nav_span" href = "work.php"><h4>Pracuj</h4></a>';
+                  $_SESSION['pracownik'] = $row['pracownik'];
+                }
+              }
+            }
+          ?>
         </nav>
       </div>
       <div class = "row">

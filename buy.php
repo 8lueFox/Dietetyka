@@ -6,7 +6,7 @@
         $idDiety = $_GET['id'];
         include 'config.php';
         $connect = new PDO($servername, $username, $password, $options);
-        $sql = sprintf("SELECT * FROM diety WHERE id_diety = ($idDiety+1)");
+        $sql = sprintf("SELECT * FROM diety WHERE id_diety = ($idDiety)");
         $statement = $connect->prepare($sql);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -21,7 +21,7 @@
   <div class = "col-4 text-center">
     <h5 class = "text-center">Co zjesz w diecie <?php echo $result['nazwa'];?> </h5>
     <?php
-      $sql = sprintf("SELECT nazwa FROM dieta_danie AS dd INNER JOIN dania AS d ON dd.id_dania = d.id_dania WHERE id_diety = ($idDiety+1);");
+      $sql = sprintf("SELECT nazwa FROM dieta_danie AS dd INNER JOIN dania AS d ON dd.id_dania = d.id_dania WHERE id_diety = ($idDiety);");
       $statement = $connect->prepare($sql);
       $statement->execute();
       $res = $statement->fetchAll();
