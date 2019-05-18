@@ -5,7 +5,6 @@
   include 'config.php';
   $connect = new PDO($servername, $username, $password, $options);
   $sql = sprintf("SELECT * FROM diety WHERE id_diety = $idDiety");
-  $idDiety -=1;
   $statement = $connect->prepare($sql);
   $statement->execute();
   $result = $statement->fetchAll();
@@ -23,7 +22,7 @@
   <div class = "col-5 align_justify"><?php echo $result['opis'];?></div>
   <div class = "col-4 text-center">
     <label>Kup teraz<br> JEDYNIE za<br><b> <?php echo $result['cena'];?></b><br> za miesiąc.</label><br>
-    <a href='buy.php' class='btn btn-sm btn-outline-secondary'>KUP TERAZ</a>
+    <a href='buy.php?id=<?php echo $idDiety?>' class='btn btn-sm btn-outline-secondary'>KUP TERAZ</a>
   </div>
 </div>
 <div class = "row py-5">
