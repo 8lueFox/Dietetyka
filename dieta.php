@@ -49,13 +49,17 @@
 </form>
 <?php
   include 'config.php';
-  $sql = sprintf("select u.login, o.tekst from opinie as o inner join uzytkownicy as u on o.id_user = u.id_uzytkownika where o.id_diety=$idDiety");
+  $sql = sprintf("select o.id_opinii, u.login, o.tekst from opinie as o inner join uzytkownicy as u on o.id_user = u.id_uzytkownika where o.id_diety=$idDiety");
   $statement = $connect->prepare($sql);
   $statement->execute();
   $result = $statement->fetchAll();
   foreach ($result as $row) {
+    $del = "";
+    if($_SESSION['pracownik'] == 2)
+      $del = "<div class='col-2'><a href='work/usunKomentarz.php?id=".$row['id_opinii']."&idD=$idDiety'><img src='delete.ico' width='20px'></a></div>";
     echo "<div class='col-2'></div>";
-    echo "<div class='col-8 py-2'><div class='col-3'><b>".$row['login']."</b></div><div class='col-12'>".$row['tekst']."</div></div>";
+    echo "<div class='col-8 py-2'><div class='col-3'><b>".$row['login']."</b></div><div class='row'><div class='col-10'>".$row['tekst']."</div>$del
+    </div></div>";
     echo "<span id='pasek'></span>";
     echo "<div class='col-2'></div>";
   }

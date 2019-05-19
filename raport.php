@@ -67,6 +67,17 @@
       echo "<span class='col-2'>
         Ilość wysłanych diet:<b>".$row['ilosc']."</b>
       </span>";
+      $sql = sprintf("SELECT sum(round(d.cena/30*(datediff(czas_zakonczenia,czas_kupna)+1),2)) as cena FROM zamowienia AS z INNER JOIN diety as d on z.id_diety = d.id_diety WHERE czas_kupna BETWEEN '$today2' AND '$today'");
+      $statement = $connect->prepare($sql);
+      $statement->execute();
+      $result = $statement->fetchAll();
+      foreach($result as $row){
+        if($row['cena'] === NULL)
+          $row['cena'] = 0;
+        echo "<span class='col-2'>
+          Zarobione pieniądzę:<b> ".$row['cena']."zł</b>
+        </span>";
+      }
     }
   ?>
 </div>

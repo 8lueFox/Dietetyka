@@ -21,7 +21,7 @@ session_start();
           <div class = "col-1 justify-content-end pt-2">
             <?php
             if(isset($_SESSION['login'])){
-              echo "Witaj, ".$_SESSION['login'];
+              echo "Witaj, <b><a href='profil.php'>".$_SESSION['login']."</a></b>";
               echo '<a class = "btn btn-sm btn-outline-secondary" href = "logout.php">Logout</a>';
             }
               else{
@@ -36,8 +36,7 @@ session_start();
         <nav class = "nav d-flex justify-content-between">
           <a class = "p-2 nav_span" href = "index.php"><h4>Home</h4></a>
           <a class = "p-2 nav_span" href = "index.php#diety"><h4>Diety</h4></a>
-          <a class = "p-2 nav_span" href = "#"><h4>Blog</h4></a>
-          <a class = "p-2 nav_span" href = "#"><h4>Kontakt</h4></a>
+          <a class = "p-2 nav_span" href = "kontakt.php"><h4>Kontakt</h4></a>
           <?php
             if(isset($_SESSION['login'])){
               include 'config.php';

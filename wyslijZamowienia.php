@@ -37,6 +37,7 @@
         $sql = "UPDATE zamowienia SET czas_ostatniej_wysylki = '$today' WHERE id_zamowienia = $zam[$k]";
         $statement = $connect->prepare($sql);
         $statement->execute();
+        header("Location: wyslijZamowienia.php");
       }
     }
   }
