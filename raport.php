@@ -59,7 +59,7 @@
       echo "<span class='col-2'>
         Ilość sprzedanych diet:<b>".$row['ilosc']."</b>
       </span>";
-      $sql = sprintf("SELECT count(id_zamowienia) as ilosc from zamowienia where czas_ostatniej_wysylki BETWEEN '$today2' AND '$today' AND czas_kupna <= czas_ostatniej_wysylki");
+      $sql = sprintf("SELECT sum(datediff(czas_ostatniej_wysylki+1,czas_kupna)) as ilosc from zamowienia where czas_ostatniej_wysylki BETWEEN '$today2' AND '$today' AND czas_kupna <= czas_ostatniej_wysylki;");
       $statement = $connect->prepare($sql);
       $statement->execute();
       $result = $statement->fetchAll();

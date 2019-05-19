@@ -32,7 +32,7 @@
     <b>Twoja dieta: </b>
     <?php
       $today = date("Y-m-s");
-      $sql = sprintf("select nazwa, round(cena/30*(datediff(czas_zakonczenia,czas_kupna)+1),2) as cena, czas_kupna, czas_zakonczenia
+      $sql = sprintf("select nazwa, round(cena/30*(datediff(czas_zakonczenia,czas_kupna)),2) as cena, czas_kupna, czas_zakonczenia
       from zamowienia natural join diety
       where id_user = (select id_uzytkownika from uzytkownicy where login = '$login')
         and czas_zakonczenia >= '$today';");

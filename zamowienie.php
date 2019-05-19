@@ -15,13 +15,13 @@ $statement->execute();
 $today = date("Y-m-d");
 $today = date("Y-m-d", strtotime($today . '+1 day'));
 if($czas == 1){
-  $stop_day = date("Y-m-d", strtotime($today . '+7 day'));
+  $stop_day = date("Y-m-d", strtotime($today . '+8 day'));
 }else if($czas == 2){
-  $stop_day = date("Y-m-d", strtotime($today . '+14 day'));
+  $stop_day = date("Y-m-d", strtotime($today . '+15 day'));
 }else if($czas == 3){
-  $stop_day = date("Y-m-d", strtotime($today . '+21 day'));
+  $stop_day = date("Y-m-d", strtotime($today . '+22 day'));
 }else if($czas == 4){
-  $stop_day = date("Y-m-d", strtotime($today . '+30 day'));
+  $stop_day = date("Y-m-d", strtotime($today . '+31 day'));
 }
 $today2 = date("Y-m-d", strtotime($today."-1 day"));
 $sql = sprintf("INSERT INTO zamowienia VALUES (NULL, (SELECT id_uzytkownika FROM uzytkownicy WHERE login = '$login'), ($idDiety), '$today', '$stop_day', '$today2');");
