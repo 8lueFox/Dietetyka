@@ -27,7 +27,7 @@
           </div>
           <div class="form-group">
   	       <label for="login">Data urodzenia:</label>
-  	       <input type="data" name="data" id="data" class="form-control" placeholder="Wprowadź datę urodzin(RRRR-MM-DD)">
+  	       <input type="date" name="data" id="data" class="form-control" placeholder="Wprowadź datę urodzin(RRRR-MM-DD)">
           </div>
           <span id="loginError"></span>
   	      <input type="submit" name="submit" value="Zarejestruj się" class="btn btn-sm btn-outline-secondary">
