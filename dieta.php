@@ -56,7 +56,7 @@
   foreach ($result as $row) {
     $del = "";
     if(isset($_SESSION['pracownik']) && $_SESSION['pracownik'] == 2)
-      $del = "<div class='col-2'><a href='work/usunKomentarz.php?id=".$row['id_opinii']."&idD=$idDiety'><img src='delete.ico' width='20px'></a></div>";
+      $del = "<div class='col-2'><a href='work/usunKomentarz.php?id=".$row['id_opinii']."&idD=$idDiety'><img src='img/delete.ico' width='20px'></a></div>";
     echo "<div class='col-2'></div>";
     echo "<div class='col-8 py-2'><div class='col-3'><b>".$row['login']."</b></div><div class='row'><div class='col-10'>".$row['tekst']."</div>$del
     </div></div>";

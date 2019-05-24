@@ -24,7 +24,7 @@
     <span class = "font-italic font-weight-bold"><h1>you're never too much fit</h1></span>
   </div>
   <div class = "col-7 d-none d-sm-block">
-    <img src = "45332.png"  class = "img-responsive  pl-5 py-4 ml-5" width="400">
+    <img src = "img/45332.png"  class = "img-responsive  pl-5 py-4 ml-5" width="400">
   </div>
 </div>
 <div class = "container" id="diety">
