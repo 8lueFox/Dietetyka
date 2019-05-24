@@ -67,6 +67,7 @@
       echo "<span class='col-2'>
         Ilość wysłanych diet:<b>".$row['ilosc']."</b>
       </span>";
+      $today = date("Y-m-d", strtotime($today . '+1 day'));
       $sql = sprintf("SELECT sum(round(d.cena/30*(datediff(czas_zakonczenia,czas_kupna)+1),2)) as cena FROM zamowienia AS z INNER JOIN diety as d on z.id_diety = d.id_diety WHERE czas_kupna BETWEEN '$today2' AND '$today'");
       $statement = $connect->prepare($sql);
       $statement->execute();
@@ -78,6 +79,25 @@
           Zarobione pieniądzę:<b> ".$row['cena']."zł</b>
         </span>";
       }
+      echo "<div class='row'>";
+        echo "<span class='col-6'>";
+          echo "<table class='table table-striped'>";
+            echo "<thead><tr><th>Nazwa</th><th>Sprzedana ilość</th><th>Zarobiona kwota</th></thead>";
+            echo "<tbody>";
+              $sql = sprintf("SELECT count(czas_kupna) as ilosc, nazwa, sum(round(cena/30*(datediff(czas_zakonczenia,czas_kupna)+1),2)) as cena from zamowienia natural join diety where czas_kupna between '$today2' and '$today' group by id_diety;");
+              $statement = $connect->prepare($sql);
+              $statement->execute();
+              $result = $statement->fetchAll();
+              if($result)
+                foreach ($result as $row) {
+                  echo "<tr><td class='text-center'>".$row['nazwa']."</td><td class='text-center'>".$row['ilosc']."</td><td class='text-center'>".$row['cena']."</td></tr>";
+                }
+              else
+                echo "<tr><td class='text-center'>0</td><td class='text-center'>0</td><td class='text-center'>0</td></tr>";
+            echo "</tbody>";
+          echo "</table>";
+        echo "</span>";
+      echo "</div>";
     }
   ?>
 </div>
