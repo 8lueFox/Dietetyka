@@ -1,23 +1,3 @@
-INSERT INTO `zamowienia` (`id_zamowienia`, `id_user`, `id_diety`, `czas_kupna`, `czas_zakonczenia`, `czas_ostatniej_wysylki`) VALUES
-(2, 4, 1, '2019-05-19', '2019-06-18', '2019-05-19'),
-(3, 5, 6, '2019-05-19', '2019-06-09', '2019-05-19'),
-(4, 2, 3, '2019-05-20', '2019-05-27', '2019-05-19'),
-(5, 6, 3, '2019-05-19', '2019-06-10', '2019-05-19'),
-(6, 7, 5, '2019-03-03', '2019-03-31', '2019-03-31'),
-(7, 8, 2, '2019-05-20', '2019-06-04', '2019-05-19'),
-(8, 9, 1, '2019-01-02', '2019-01-30', '2019-01-30'),
-(9, 10, 4, '2019-05-20', '2019-06-20', '2019-05-19'),
-(10, 11, 3, '2019-04-06', '2019-05-04', '2019-05-04'),
-(11, 12, 2, '2019-05-01', '2019-05-15', '2019-05-15'),
-(12, 13, 4, '2019-02-01', '2019-03-01', '2019-03-01'),
-(13, 14, 1, '2019-05-20', '2019-05-28', '2019-05-19'),
-(14, 15, 1, '2019-05-20', '2019-06-20', '2019-05-19'),
-(15, 16, 4, '2019-05-22', '2019-06-13', '2019-05-21'),
-(16, 17, 5, '2019-05-22', '2019-06-22', '2019-05-21'),
-(17, 17, 7, '2019-05-22', '2019-05-30', '2019-05-21'),
-(18, 17, 2, '2019-05-22', '2019-06-13', '2019-05-21'),
-(19, 17, 2, '2019-05-22', '2019-05-30', '2019-05-21');
-
 INSERT INTO `uzytkownicy` (`id_uzytkownika`, `imie`, `nazwisko`, `email`, `miasto`, `ulica`, `nr_domu`, `nr_mieszkania`, `data_urodzenia`, `plec`, `login`, `password`, `pracownik`, `data_zarejestrowania`) VALUES
 (1, 'Kacper', 'JÄ™drzejewski', 'kacper@jedrzejewski.pl', 'Biala Podlaska', 'Grunwaldzka', '1', '', '1997-02-14', 'M', 'Ashby', 'haslo', 2, '2019-05-18'),
 (2, 'PaweÅ‚', 'Nowak', 'pawel@nowak.pl', 'Siedlce', 'Wikariego', '5', '22', '1999-05-10', 'M', 'pawelos', 'Nowak', 1, '2019-05-18'),
@@ -71,31 +51,13 @@ INSERT INTO `produkty` (`id_produktu`, `nazwa`) VALUES
 (32, 'Czekolada '),
 (33, 'BrokuÅ‚');
 
-INSERT INTO `opinie` (`id_opinii`, `id_user`, `id_diety`, `tekst`, `data_wstawienia`) VALUES
-(1, 1, 1, 'Nie jeden warchlak na niej urÃ³sÅ‚ :) Pozdrawiam cieplutko ', '2019-02-14'),
-(2, 4, 6, 'W koÅ„cu coÅ› dla mnie hihi ^^', '2019-02-26'),
-(3, 7, 6, 'MyÅ›lÄ™, Å¼e to odpowiednia dieta dla poczÄ…tkujÄ…cych. ', '2019-04-07'),
-(4, 7, 5, 'Super, w koÅ„cu skoÅ„czyÅ‚y siÄ™ moje problemy.', '2019-05-17'),
-(5, 9, 1, 'BiorÄ™ siÄ™ za siebie!!!!1', '2019-05-19'),
-(6, 10, 2, 'Kurczak, ryÅ¼ i kreatyna zrobiÄ… ze mnie .... :)', '2018-10-17'),
-(7, 11, 3, 'Dieta idealna jak dla mnie ^^', '2018-11-11'),
-(8, 11, 5, 'Kolega kolegi opowiadaÅ‚ Å¼e szwagierka jego brata ciotecznego od strony matki ma wnuczka i wnuczka dziewczyna ma siostrÄ™ ktÃ³ra ma chÅ‚opaka i jego ojciec testowaÅ‚ i poleca ;P', '2019-03-30'),
-(9, 12, 2, 'ZrÃ³bcie coÅ› ze mnÄ… :((((((', '2019-05-19'),
-(10, 13, 4, 'Mam nadziejÄ™, Å¼e pomoÅ¼e :#', '2019-05-19'),
-(11, 13, 1, 'Jak moÅ¼na tyle zjeÅ›Ä‡ O.o', '2019-05-19'),
-(12, 14, 1, 'Polecam wszystkim uÅ¼ytkownikom!\r\n', '2019-05-19'),
-(13, 15, 1, 'Dieta tylko dla chucherek. Nie da siÄ™ najeÅ›Ä‡. 10k minimum <3', '2019-05-19'),
-(14, 2, 7, 'Polecam - Barry Pioter', '2019-05-19');
-
 INSERT INTO `diety` (`id_diety`, `nazwa`, `cena`, `opis`, `kalorycznosc`) VALUES
 (1, 'DZiK', 2530, 'Dla prawdziwego dzika, ktÃ³ry lubi duÅ¼o zjeÅ›Ä‡.', 5000),
 (2, 'Slim', 1200, 'Slim to dieta dedykowana przede wszystkim osobom chcÄ…cym zredukowaÄ‡ masÄ™ ciaÅ‚a.', 1700),
 (3, 'Fajter', 2000, 'Fajter to dieta przeznaczona gÅ‚Ã³wnie dla osÃ³b o duÅ¼ej aktywnoÅ›ci fizycznej i nastawionych na budowÄ™ lub utrzymanie wysokiej masy miÄ™Å›niowej.', 3500),
 (4, 'Care', 2000, 'Care to nasz autorski program dedykowany osobom z problemami trawiennymi. Z diety wykluczone sÄ… produkty ciÄ™Å¼kostrawne, takie jak nasiona roÅ›lin strÄ…czkowych, warzywa kapustne, produkty z wysokÄ… zawartoÅ›ciÄ… laktozy, owoce o wysokiej zawartoÅ›ci Å‚atwo fermentujÄ…cych wÄ™glowodanÃ³w.', 1900),
 (5, 'No lactose', 1500, 'No Lactose to program dedykowany osobom z nadwraÅ¼liwoÅ›ciÄ… pokarmowÄ… na laktozÄ™. NajczÄ™stszymi objawami nietolerancji cukru mlecznego sÄ… dolegliwoÅ›ci trawienne jak np.: wzdÄ™cia, bÃ³le brzucha lub uczucie ciÄ™Å¼koÅ›ci. W menu tej diety jako zamienniki produktÃ³w laktozowych wykorzystujemy nabiaÅ‚ bez laktozowy oraz roÅ›linne substytuty nabiaÅ‚u.', 2500),
-(6, 'Fit', 1300, 'Fit to dieta zaprojektowana z myÅ›lÄ… o osobach aktywnych. Odpowiednio dobrana wartoÅ›Ä‡ energetyczna oraz zbilansowane i urozmaicone posiÅ‚ki pozwalajÄ… prowadziÄ‡ aktywny tryb Å¼ycia i dbaÄ‡ o dobrÄ… formÄ™.', 1900),
-(7, 'Nic', 100, 'BÄ™dziesz najedzony i peÅ‚en siÅ‚. Dieta tylka dla odwaÅ¼nych i wytrwaÅ‚ych. Poleca szef kuchnii.', 152),
-(8, 'KwaÅ›niewskiego', 1550, 'Dieta ktÃ³ra pomaga w znalezieniu kolegÃ³w', 40);
+(6, 'Fit', 1300, 'Fit to dieta zaprojektowana z myÅ›lÄ… o osobach aktywnych. Odpowiednio dobrana wartoÅ›Ä‡ energetyczna oraz zbilansowane i urozmaicone posiÅ‚ki pozwalajÄ… prowadziÄ‡ aktywny tryb Å¼ycia i dbaÄ‡ o dobrÄ… formÄ™.', 1900);
 
 INSERT INTO `dania` (`id_dania`, `nazwa`) VALUES
 (1, 'Kurczak po chiÅ„sku z ryÅ¼em'),
@@ -138,29 +100,7 @@ INSERT INTO `danie_produkt` (`id_dania`, `id_produktu`) VALUES
 (7, 29),
 (7, 30),
 (7, 31),
-(7, 32),
-(8, 1),
-(8, 2),
-(8, 4),
-(8, 23),
-(8, 31),
-(8, 32),
-(9, 1),
-(9, 3),
-(9, 5),
-(9, 6),
-(9, 10),
-(9, 12),
-(9, 14),
-(9, 18),
-(9, 19),
-(9, 20),
-(9, 21),
-(9, 24),
-(9, 25),
-(9, 27),
-(9, 31),
-(9, 33);
+(7, 32);
 
 INSERT INTO `dieta_danie` (`id_diety`, `id_dania`) VALUES
 (1, 1),
@@ -171,8 +111,36 @@ INSERT INTO `dieta_danie` (`id_diety`, `id_dania`) VALUES
 (3, 1),
 (4, 2),
 (5, 4),
-(6, 3),
-(7, 9),
-(8, 10),
-(8, 11),
-(8, 12);
+(6, 3);
+
+INSERT INTO `zamowienia` (`id_zamowienia`, `id_user`, `id_diety`, `czas_kupna`, `czas_zakonczenia`, `czas_ostatniej_wysylki`) VALUES
+(2, 4, 1, '2019-05-19', '2019-06-18', '2019-05-19'),
+(3, 5, 6, '2019-05-19', '2019-06-09', '2019-05-19'),
+(4, 2, 3, '2019-05-20', '2019-05-27', '2019-05-19'),
+(5, 6, 3, '2019-05-19', '2019-06-10', '2019-05-19'),
+(6, 7, 5, '2019-03-03', '2019-03-31', '2019-03-31'),
+(7, 8, 2, '2019-05-20', '2019-06-04', '2019-05-19'),
+(8, 9, 1, '2019-01-02', '2019-01-30', '2019-01-30'),
+(9, 10, 4, '2019-05-20', '2019-06-20', '2019-05-19'),
+(10, 11, 3, '2019-04-06', '2019-05-04', '2019-05-04'),
+(11, 12, 2, '2019-05-01', '2019-05-15', '2019-05-15'),
+(12, 13, 4, '2019-02-01', '2019-03-01', '2019-03-01'),
+(13, 14, 1, '2019-05-20', '2019-05-28', '2019-05-19'),
+(14, 15, 1, '2019-05-20', '2019-06-20', '2019-05-19'),
+(15, 16, 4, '2019-05-22', '2019-06-13', '2019-05-21'),
+(16, 17, 5, '2019-05-22', '2019-06-22', '2019-05-21');
+
+INSERT INTO `opinie` (`id_opinii`, `id_user`, `id_diety`, `tekst`, `data_wstawienia`) VALUES
+(1, 1, 1, 'Nie jeden warchlak na niej urÃ³sÅ‚ :) Pozdrawiam cieplutko ', '2019-02-14'),
+(2, 4, 6, 'W koÅ„cu coÅ› dla mnie hihi ^^', '2019-02-26'),
+(3, 7, 6, 'MyÅ›lÄ™, Å¼e to odpowiednia dieta dla poczÄ…tkujÄ…cych. ', '2019-04-07'),
+(4, 7, 5, 'Super, w koÅ„cu skoÅ„czyÅ‚y siÄ™ moje problemy.', '2019-05-17'),
+(5, 9, 1, 'BiorÄ™ siÄ™ za siebie!!!!1', '2019-05-19'),
+(6, 10, 2, 'Kurczak, ryÅ¼ i kreatyna zrobiÄ… ze mnie .... :)', '2018-10-17'),
+(7, 11, 3, 'Dieta idealna jak dla mnie ^^', '2018-11-11'),
+(8, 11, 5, 'Kolega kolegi opowiadaÅ‚ Å¼e szwagierka jego brata ciotecznego od strony matki ma wnuczka i wnuczka dziewczyna ma siostrÄ™ ktÃ³ra ma chÅ‚opaka i jego ojciec testowaÅ‚ i poleca ;P', '2019-03-30'),
+(9, 12, 2, 'ZrÃ³bcie coÅ› ze mnÄ… :((((((', '2019-05-19'),
+(10, 13, 4, 'Mam nadziejÄ™, Å¼e pomoÅ¼e :#', '2019-05-19'),
+(11, 13, 1, 'Jak moÅ¼na tyle zjeÅ›Ä‡ O.o', '2019-05-19'),
+(12, 14, 1, 'Polecam wszystkim uÅ¼ytkownikom!\r\n', '2019-05-19'),
+(13, 15, 1, 'Dieta tylko dla chucherek. Nie da siÄ™ najeÅ›Ä‡. 10k minimum <3', '2019-05-19');

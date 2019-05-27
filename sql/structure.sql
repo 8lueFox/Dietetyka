@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `diet`.`uzytkownicy` (
   `login` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `pracownik` INT(1) NOT NULL,
+  `data_zarejestrowania` DATE NOT NULL,
   PRIMARY KEY (`id_uzytkownika`))
 ENGINE = InnoDB;
 
@@ -66,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `diet`.`opinie` (
   `id_user` INT NOT NULL,
   `id_diety` INT NOT NULL,
   `tekst` VARCHAR(255) NOT NULL,
+  `data_wstawienia` DATE NOT NULL,
   PRIMARY KEY (`id_opinii`),
   CONSTRAINT `fk_Opinia_uzytkownicy1`
     FOREIGN KEY (`id_user`)

@@ -14,6 +14,18 @@
     </span>
     ';
   }?>
+  <?php if($_SESSION['pracownik'] == 2){
+    echo'
+    <span class="col-sm-12 col-md-4 py-2 text-center border border-succes">
+      <label>Zabierz uprawnienia</label>
+      <form method="post" action="work/zabierzUprawnienia.php">
+        <label>Login: </label>
+        <input type="text" name="login" class="form-control" placeholder="Wprowadź login nowego pracownika">
+        <input type="submit" name="submit" value="Zabierz uprawnienia" class="btn btn-sm btn-outline-secondary my-2">
+      </form>
+    </span>
+    ';
+  }?>
   <?php if($_SESSION['pracownik'] == 1){
     echo'
   <span class="col-sm-12 col-md-4 py-2 text-center border border-succes">
@@ -25,6 +37,31 @@
     </form>
   </span>';
 }?>
+<?php if($_SESSION['pracownik'] == 1){
+  echo'
+  <span class="col-sm-12 col-md-4 py-2 text-center border border-succes">
+    <label>Dodaj danie</label>
+    <form method="post" action="work/dodajDanie.php">
+      <label>Nazwa dania: </label>
+      <input type="text" name="nazwa" class="form-control" placeholder="Wprowadź nazwę dania">
+      <label>Produkty potrzebne do dania:</label>
+      <select multiple class="form-control" name="produkty[]">';
+        include 'config.php';
+        $connect = new PDO($servername, $username, $password, $options);
+        $sql = sprintf("SELECT * FROM produkty");
+        $statement = $connect->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        foreach($result as $row){
+          $id = $row['id_produktu'];
+          $nazwa = $row['nazwa'];
+          echo "<option value='$id'>$nazwa</option>";
+        }
+        echo'
+      </select>
+      <input type="submit" name="submit" value="Dodaj danie" class="btn btn-sm btn-outline-secondary my-2">
+    </form>
+  </span>';}?>
 <?php if($_SESSION['pracownik'] == 1){
   echo'
   <span class="col-sm-12 col-md-4 py-2 text-center border border-succes">
@@ -54,45 +91,60 @@
     </form>
   </span>';
 }?>
-<?php if($_SESSION['pracownik'] == 1){
-  echo'
-  <span class="col-sm-12 col-md-4 py-2 text-center border border-succes">
-    <label>Dodaj danie</label>
-    <form method="post" action="work/dodajDanie.php">
-      <label>Nazwa dania: </label>
-      <input type="text" name="nazwa" class="form-control" placeholder="Wprowadź nazwę dania">
-      <label>Produkty potrzebne do dania:</label>
-      <select multiple class="form-control" name="produkty[]">';
-        include 'config.php';
-        $connect = new PDO($servername, $username, $password, $options);
-        $sql = sprintf("SELECT * FROM produkty");
-        $statement = $connect->prepare($sql);
-        $statement->execute();
-        $result = $statement->fetchAll();
-        foreach($result as $row){
-          $id = $row['id_produktu'];
-          $nazwa = $row['nazwa'];
-          echo "<option value='$id'>$nazwa</option>";
-        }
+  <?php if($_SESSION['pracownik'] == 1){
+    echo'
+    <span class="col-sm-12 col-md-4 py-2 text-center border border-succes" id="usunProdukt">
+      <label>Usuń produkt</label>
+      <form method="post" action="work/usunProdukt.php">
+        <label>Nazwa produktu: </label>
+        <input type="text" name="nazwa" class="form-control" placeholder="Wprowadź nazwę produktu do usunięcia">
+        <input type="submit" name="submit" value="Usuń produkt" class="btn btn-sm btn-outline-secondary my-2">
+      </form>
+    ';
+    if(isset($_GET['danie'])){
+      echo "<span style='color:red'>Nie możesz usunąć - produkt jest w daniu:<br><b> ".$_GET['danie']."</b></span>";
+    }
+    echo '</span>';}?>
+    <?php if($_SESSION['pracownik'] == 1){
+      echo'
+      <span class="col-sm-12 col-md-4 py-2 text-center border border-succes" id="usunDanie">
+        <label>Usuń danie</label>
+        <form method="post" action="work/usunDanie.php">
+          <label>Nazwa dania: </label>
+          <input type="text" name="nazwa" class="form-control" placeholder="Wprowadź nazwę dania do usunięcia">
+          <input type="submit" name="submit" value="Usuń danie" class="btn btn-sm btn-outline-secondary my-2">
+        </form>
+      ';
+      if(isset($_GET['dieta'])){
+        echo "<span style='color:red'>Nie możesz usunąć - danie jest w diecie:<br><b> ".$_GET['dieta']."</b></span>";
+      }
+      echo '</span>';}?>
+      <?php if($_SESSION['pracownik'] == 1){
         echo'
-      </select>
-      <input type="submit" name="submit" value="Dodaj danie" class="btn btn-sm btn-outline-secondary my-2">
-    </form>
-  </span>';
-
-}?>
+        <span class="col-sm-12 col-md-4 py-2 text-center border border-succes" id="usunDiete">
+          <label>Usuń dietę</label>
+          <form method="post" action="work/usunDiete.php">
+            <label>Nazwa diety: </label>
+            <input type="text" name="nazwa" class="form-control" placeholder="Wprowadź nazwę diety do usunięcia">
+            <input type="submit" name="submit" value="Usuń dietę" class="btn btn-sm btn-outline-secondary my-2">
+          </form>
+        ';
+        if(isset($_GET['dieta'])){
+          echo "<span style='color:red'>Nie możesz usunąć - danie jest w diecie:<br><b> ".$_GET['dieta']."</b></span>";
+        }
+        echo '</span>';}?>
 <?php if($_SESSION['pracownik'] == 1){
   echo'
   <span class="col-sm-12 col-md-4 py-2 text-center border border-succes">
     <label class="display-3">Dzienne zamówienia</label>
     <a href="wyslijZamowienia.php" class="btn btn-sm btn-outline-secondary">Wyślij zamówienia</a>
   </span>';}?>
-  <?php if($_SESSION['pracownik'] == 2){
+  <?php if($_SESSION['pracownik'] == 1){
     echo'
   <span class="col-sm-12 col-md-4 py-2 text-center border border-succes">
     <label class="display-3">Raporty</label><br>
     <a href="raport.php" class="btn btn-sm btn-outline-secondary">Pokaż raport</a>
-  </span>
-  </div>';}?>
+  </span>';}
+  echo '</div>'?>
 
 <?php include "footer.php"?>
